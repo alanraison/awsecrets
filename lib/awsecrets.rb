@@ -1,6 +1,6 @@
 require_relative 'awsecrets/version'
 require 'optparse'
-require 'aws-sdk'
+require 'aws-sdk-core'
 require 'aws_config'
 require 'net/http'
 require 'yaml'
