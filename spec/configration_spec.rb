@@ -1,6 +1,6 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength
+require 'spec_helper'
 describe Awsecrets do
   let(:fixtures_path) do
     File.expand_path(File.join(File.dirname(__FILE__), 'fixtures'))

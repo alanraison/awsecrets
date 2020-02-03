@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'awsecrets/version'
 require 'optparse'
-require 'aws-sdk'
+require 'aws-sdk-core'
 require 'aws_config'
 require 'net/http'
 require 'yaml'
@@ -38,6 +40,7 @@ module Awsecrets
 
   def self.load_method_args
     return false unless @profile
+
     @region ||= AWSConfig[@profile]['region'] if AWSConfig[@profile]['region']
     true
   end
@@ -63,7 +66,8 @@ module Awsecrets
     @secrets_path ||= ENV['AWS_SECRETS_PATH']
     return true if @access_key_id
     return unless ENV['AWS_ACCESS_KEY_ID'] && ENV['AWS_SECRET_ACCESS_KEY']
-    @access_key_id     ||= ENV['AWS_ACCESS_KEY_ID']
+
+    @access_key_id ||= ENV['AWS_ACCESS_KEY_ID']
     @secret_access_key ||= ENV['AWS_SECRET_ACCESS_KEY']
     @session_token     ||= ENV['AWS_SESSION_TOKEN']
     true
