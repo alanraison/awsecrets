@@ -38,6 +38,7 @@ Create a command line tool `ec2sample` like following code:
 ```ruby
 #!/usr/bin/env ruby
 require 'awsecrets'
+require 'aws-sdk-ec2'
 Awsecrets.load
 ec2_client = Aws::EC2::Client.new
 puts ec2_client.describe_instances({ instance_ids: [ARGV.first] }).reservations.first.instances.first
